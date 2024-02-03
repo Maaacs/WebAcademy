@@ -1,0 +1,64 @@
+h1{
+   height: 90px;
+   overflow: hidden;
+}
+
+nav {
+   background-color: #e9ecef;
+   padding: 10px;
+}
+   
+nav ul {
+   list-style-type: none;
+   margin: 0;
+   padding: 0;
+}
+   
+nav li {
+   display: inline;
+   margin-right: 10px;
+}
+   
+nav a {
+   color: #6c747c;
+   text-decoration: none;
+}
+
+.content {
+   display: flex;
+}
+
+main {
+   img.tambaquiAssado {
+      float: left;
+      margin-right: 10px;
+   }
+    
+   img.tacaca {
+      padding-top: 10px;
+      float: left;
+      margin-right: 10px;
+   }
+}
+
+
+aside {
+   padding-top: 10px;
+}
+
+   
+footer {
+   color: #6c747c;
+   background-color: #f8f9fa;
+   padding: 10px;
+   text-align: center;
+}
+
+h3 {
+   color: red;
+ }
+ 
+ a {
+   color: red;
+ }
+ 
