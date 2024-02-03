@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="IComp, UFAM, Computação">
+    <meta name="description" content="Instituto de Computação">
+    <meta name="author" content="David Fernandes">
+    <meta http-equiv="refresh" content="600">
+    <title>Instituto de Computação</title>
+    <link rel = "stylesheet" href="public/style.css"/>
+</head>
+
+<body>
+    <h1>Formulário de Contato</h1>
+    Por favor, preencha o formulário abaixo e clique no botão Enviar Mensagem.
+    Agradecemos por seu contato.<p>
+    <fieldset>
+        <legend> Dados Básicos </legend>
+        <form id="login" method="POST" action="/user/login">
+            Nome <input type="text" name="nome" id="nome"/><br/>
+            E-mail <input type="text" name="email" id="email" value= "seunome@dominio.com.br" class="gray-text-input" /><br/>
+            Website <input type="text" value="https://" name="nome" id="email"/><br/>
+    </fieldset>
+
+    <fieldset>
+        <legend> Seu curso no Instituto de Computação </legend>
+        <input id="cc" type="radio" name="curso" value="cc">
+        <label for="cc">Ciência da Computação<br></label>
+        <input id="es" type="radio" name="curso" value="es">
+        <label for="es">Engenharia de Software<br></label>
+        <input id="ec" type="radio" name="curso" value="ec">
+        <label for="ec">Engenharia da Computação</label>
+    </fieldset>
+    <fieldset>
+        <legend>Assinale as linguagens já usadas por você:</legend>       
+        <label for="java">Java</label>
+        <input type="checkbox" name="ling" id="java" value="java">
+        <label for="c">C</label>
+        <input type="checkbox" name="ling" id="c" value="c">
+        <label for="cpp">C++</label>
+        <input type="checkbox" name="ling" id="cpp" value="cpp">
+        <label for="perl">Perl</label>
+        <input type="checkbox" name="ling" id="perl" value="perl">
+        <label for="python">Python</label>
+        <input type="checkbox" name="ling" id="python" value="python">
+        <label for="js">Javascript</label>
+        <input type="checkbox" name="ling" id="js" value="js">
+    </fieldset>
+
+    <fieldset>
+
+        <legend>Dados complementares</legend>
+        <label for="cor">Cor favorita</label>
+        <input type="color" name="cor" id="cor"><br>       
+        <label for="nascimento">Data de Nascimento</label>
+        <input type="date" name="nascimento" id="nascimento"><br>
+        <label for="ano">Ano de entrada em seu curso do IComp</label>
+        <input type="text" id="ano" name="ano" class="tamanho-caixa"><br>
+        <label for="slider">Nota para este site</label>
+        <input type="range" id="slider" name="slider" min="0" max="100" value="0" class="volume-slider">
+        <script src="public/script.js"></script>
+    </fieldset>
+
+    <fieldset>
+        <legend>Área de atuação</legend>       
+        <select name="area" id="area">
+            <option value="1">Banco de Dados</option>
+            <option value="2">Educação a Distância</option>
+            <option value="3">Engenharia de Software</option>
+            <option value="4">Otimização</option>
+            <option value="5">Programação para a Web</option>
+            <option value="6">Recuperação de Informação</option>
+            <option value="7">Redes de Computadores</option>
+        </select>
+    </fieldset>
+
+    <fieldset>
+        <legend>Submeta seu curriculo vitae</legend>       
+        <label for="avatar">Choose file:</label>
+        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
+    </fieldset>
+
+    <fieldset>
+        <legend>Digite sua mensagem</legend>       
+        <textarea name="mensagem" rows="4" cols="40">
+            Este é o valor padrão!
+        </textarea>
+    </fieldset>
+    <p>
+        <input type="reset" value="Resetar Dados" />
+        <button type = "submit">Enviar Mensagem</button>
+    </p>
+
+
+</form>
+</body>
+
+</html>
