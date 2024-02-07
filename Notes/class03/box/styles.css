@@ -1,0 +1,15 @@
+.box1 {
+    background-color: rgb(102, 221, 221);
+    width: 1000px;
+    height: 50vh;
+    border-radius: 8px;
+    border: 1px solid rgb(166, 79, 79);
+}
+
+.box2 {
+    background-color: rgb(206, 153, 206);
+    width: 50%;
+    height: 50vh;
+    border-radius: 8px;
+    border: 1px solid rgb(50, 3, 34);
+}
