@@ -1,0 +1,14 @@
+.box1 {
+    background-color: burlywood;
+    background-image: url(/Users/Max/Documents/WebAcademy/Notes/class04/img/CSS.png);
+    background-size: 60px;
+    background-position: 20px 10px;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    margin: 10px;
+    width: 400px;
+    padding: 10px;
+
+    width: 50%; /*50% da tela do browser*/
+    max-width: 600px; /*div nao pode passar desse tamanho */
+}

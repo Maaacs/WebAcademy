@@ -1,0 +1,15 @@
+#toggle {
+    width: 300px;
+    height: 100px;
+    border: 1px solid black;
+    overflow-x: scroll;
+}
+
+span {
+    font-family: bold;
+    border: 1px solid black;
+}
+
+p {
+    text-transform: capitalize;
+}
