@@ -1,0 +1,51 @@
+.container {
+    display: grid;
+    height: calc(100vh - 16px);
+    gap: 8px;
+    margin: 6px;
+    /* border: 1px solid black; */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    /* grid-template-columns: auto;
+    grid-template-rows: auto; */
+    grid-template-areas:
+        "re re re re "
+        "yello yello purpl purpl"
+        "yello yello blu orang";
+}
+
+.container .head {
+    grid-area: blu;
+    background-color: blue;
+    border-radius: 5%;
+}
+
+.container .na {
+    grid-area: yello;
+    background-color: yellow;
+    border-radius: 5%;
+    
+}
+
+.container .mai {
+    grid-area: re;
+    background-color: red;
+    border-radius: 5%;
+    
+}
+
+.container .asid {
+    grid-area: orang;
+    background-color: orange;
+    border-radius: 5%;
+  
+}
+
+.container .foot {
+    grid-area: purpl;
+    background-color: purple;
+    border-radius: 5%;
+    
+}
+
+
