@@ -1,34 +1,49 @@
 .container {
     display: grid;
-    background-color: blueviolet;
-    border: 1px solid black;
     height: calc(100vh - 16px);
-    grid-template-rows: 1fr 2fr 1fr;
-    grid-auto-rows: 40px;
-    grid-template-areas: 
-    "head head head head"
-    "nav main main main ads"
-    "foot foot foot foot foot";
+    padding: 3px;
     gap: 8px;
     box-sizing: border-box;
+    background-color: blueviolet;
+    border: 1px solid black;
+    grid-template-columns: 1fr 3fr;
+    /* grid-template-rows: auto 1fr auto; */
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-areas:
+        "header header"
+        "nav main"
+        "ads main"
+        "footer footer";
 }
 
-.container > header{ /* ">" filho imediato*/
-    grid-area: head;
+.container > header { /* ">" filho imediato*/
+    grid-area: header;
+    background-color: lightblue;
+    padding: 20px;
+    text-align: center;
 }
 
-.container > nav{
+.container > nav {
     grid-area: nav;
+    background-color: lightgreen;
+    padding: 20px;
 }
 
-.container > main{
+.container > main {
     grid-area: main;
+    background-color: lightseagreen;
+    padding: 20px;
 }
 
-.container > aside{
+.container > aside {
     grid-area: ads;
+    background-color: lightyellow;
+    padding: 20px;
 }
 
-.container > footer{
-    grid-area: foot;
+.container > footer {
+    grid-area: footer;
+    background-color: lightcoral;
+    padding: 20px;
+    text-align: center;
 }
