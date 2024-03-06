@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skateshop</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+<!-- Navbar -->
+<nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">Skateshop</a>
+    <a class="navbar-brand" href="#">Início</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Gerenciar produtos</a>
+          </li>
+        </ul>
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+             <a class="btn btn-outline-primary" href="#">Sair</a>
+            </li>
+          </ul>
+    </div>
+</nav>
+<!-- Listagem de Produtos -->
+<div class="container mt-4">
+    <h2 class="mb-4">Produtos:</h2>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+      <!-- Cards de Produto -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="assets/placeholder-image.png" class="card-img-top" alt="Bicicleta">
+                <div class="card-body">
+                    <h5 class="card-title">Bicicleta</h5>
+                    <p class="card-text">R$ 1.000,00</p>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn btn-primary btn-block">Adicionar no carrinho</button>
+                </div>
+            </div>
+        </div>
+        <!-- Cards de Produto -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="assets/placeholder-image.png" class="card-img-top" alt="Skate">
+                <div class="card-body">
+                    <h5 class="card-title">Skate</h5>
+                    <p class="card-text">R$ 500,00</p>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn btn-primary btn-block">Adicionar no carrinho</button>
+                </div>
+            </div>
+        </div>
+        <!-- Cards de Produto -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="assets/placeholder-image.png" class="card-img-top" alt="Patins">
+                <div class="card-body">
+                    <h5 class="card-title">Patins</h5>
+                    <p class="card-text">R$ 1.240,00</p>
+                </div>
+                <div class="card-footer">
+                  <button type="button" class="btn btn-primary btn-block">Adicionar no carrinho</button>
+                </div>
+            </div>
+        </div>
+        <!-- Cards de Produto -->
+        <div class="col">
+            <div class="card h-100">
+                <img src="assets/placeholder-image.png" class="card-img-top" alt="Prancha de Surf">
+                <div class="card-body">
+                    <h5 class="card-title">Prancha de Surf</h5>
+                    <p class="card-text">R$ 3.500,00</p>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-secondary btn-block" disabled>Indisponível</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
