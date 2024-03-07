@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@700&display=swap');
+
+.dragon-ball-title {
+    text-align: center;
+    font-family: 'Kanit', sans-serif; 
+    text-shadow: 2px 2px 4px #000000; 
+    font-size: 48px; 
+    background-image: linear-gradient(45deg, #FFD700, #FDBE02); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: glow 1s infinite alternate;
+}
+@keyframes glow {
+    to {
+        text-shadow: 0 0 10px #FFF000, 0 0 20px #FFF000, 0 0 30px #EED000, 0 0 40px #DAA000, 0 0 50px #DAA000;
+    }
+}
+
+@keyframes kiCharge {
+  from {
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ffd700, 0 0 20px #ffd700, 0 0 25px #ffd700, 0 0 30px #ffd700, 0 0 35px #ffd700;
+  }
+  to {
+    box-shadow: 0 0 20px #fff, 0 0 30px #ffae00, 0 0 40px #ffae00, 0 0 50px #ffae00, 0 0 60px #ffae00, 0 0 70px #ffae00, 0 0 80px #ffae00;
+  }
+}
+
+body {
+  width: 640px;
+  margin: 0 auto;
+  background-color: rgb(255,114,1);
+  background-image: url("../assets/img/bg_db.png");
+}
+
+.saiyajin {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    font-family: 'Kanit', sans-serif; 
+    color: #ffffff; 
+    background: linear-gradient(180deg, #ffd700 0%, #ff8c00 100%); 
+    text-shadow: 2px 2px 2px #ff8c00; 
+    border: 2px solid #daa520; 
+    border-radius: 10px; 
+    cursor: pointer;
+    padding: 10px 20px; 
+    box-shadow: 0px 0px 20px #ffd700; 
+    transition: transform 0.2s, box-shadow 0.2s;
+    user-select: none; 
+  }
+  
+  .saiyajin:hover {
+    transform: scale(1.05); 
+    box-shadow: 0px 0px 30px #ffd700; 
+  }
+  
+  .saiyajin:active {
+    transform: scale(0.95); 
+    box-shadow: 0px 0px 15px #ffd700; 
+  }
+
+  .light-mode {
+    background: rgba(235, 200, 1, 0.744); 
+    box-shadow: 0px 0px 20px rgba(255,215,0,0.5); 
+    text-shadow: none;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 640px;
+  height: 480px;
+}
+
+.overlay {
+  position: absolute;
+  top: 10px;
+  left: 170px;
+  width: 300px;
+  height: 465px;
+  border-radius: 10px; 
+}
+
+.cards img {
+  display: block;
+  width: 20%;
+  cursor: pointer;
+  float: left;
+}
+
+
