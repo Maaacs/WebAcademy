@@ -1,0 +1,17 @@
+body {
+  background-color: #456390;
+}
+
+#toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100%;
+  background: #456390;
+  padding: 10px;
+}
+
+canvas {
+  margin-top: 60px;
+}
