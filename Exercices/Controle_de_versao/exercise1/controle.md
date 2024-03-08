@@ -61,3 +61,28 @@ controle.md (modificando arquivo da main)
 11-Sincronize o repositório remoto com a nova branch (passo 8) 
 
 <img src="img/image-14.png" alt="alt text" width="400"/>
+
+
+12- No repositório remoto, edite o conteúdo de um dos arquivos da branch main.
+
+<img src="img/image-15.png" alt="alt text" width="400"/>
+
+13- No repositório local, atualize a branch recém criada (passo 8) com a modificação que foi realizada na branch main no repositório remoto.
+
+<img src="img/image-16.png" alt="alt text" width="400"/>
+
+<img src="img/image-17.png" alt="alt text" width="400"/>
+
+14- No repositório local, edite um arquivo da branch criada no passo 8.
+
+<img src="img/image-18.png" alt="alt text" width="400"/>
+
+15- Na main local, faça o merge com a branch criada no passo 8.
+
+<img src="img/image-19.png" alt="alt text" width="400"/>
+
+<img src="img/image-20.png" alt="alt text" width="400"/>
+
+16- Sincronize  a main “mergeada” para o repositório remoto.
+
+<img src="img/image-21.png" alt="alt text" width="400"/>
