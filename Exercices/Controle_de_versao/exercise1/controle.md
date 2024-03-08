@@ -33,3 +33,31 @@
 5(c)- Faça o push para enviar para o repositório remoto
 
 <img src="img/image-7.png" alt="alt text" width="400"/>
+
+6- Crie um arquivo no repositório remoto diretamente pela página do repositório
+
+<img src="img/image-8.png" alt="alt text" width="400"/>
+
+7- Faça o pull no repositório local para receber o arquivo criado no repositório remoto
+
+<img src="img/image-9.png" alt="alt text" width="400"/>
+
+8- Crie uma branch no repositório local
+
+<img src="img/image-10.png" alt="alt text" width="400"/>
+
+9- Mude para a branch recém criada
+
+<img src="img/image-11.png" alt="alt text" width="400"/>
+
+10- Adicione na nova branch (passo 8) um arquivo novo e também edite (ou adicione conteúdo) um dos arquivos já criados originalmente na main.
+
+<img src="img/image-12.png" alt="alt text" width="400"/>
+
+controle.md (modificando arquivo da main)
+
+<img src="img/image-13.png" alt="alt text" width="600"/>
+
+11-Sincronize o repositório remoto com a nova branch (passo 8) 
+
+<img src="img/image-14.png" alt="alt text" width="400"/>
