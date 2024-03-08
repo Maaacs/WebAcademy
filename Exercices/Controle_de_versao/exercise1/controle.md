@@ -86,3 +86,4 @@ controle.md (modificando arquivo da main)
 16- Sincronize  a main “mergeada” para o repositório remoto.
 
 <img src="img/image-21.png" alt="alt text" width="400"/>
+![alt text](image.png)
