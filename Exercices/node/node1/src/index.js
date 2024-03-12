@@ -2,6 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const dotenv = require('dotenv');
+const { createLink } = require('./utils/createLink');
 
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 
@@ -14,7 +15,7 @@ function listarArquivosRecursivamente(dir, lista, prefixo = '') {
   arquivos.forEach(arquivo => {
     const caminhoCompleto = path.join(dir, arquivo);
     if (fs.statSync(caminhoCompleto).isDirectory()) {
-      lista.push(`${prefixo}<strong>diretório:</strong> ${arquivo}`);
+      lista.push(`${prefixo}<strong>diretório:</strong>${createLink(arquivo)}`);
       lista.push(`${prefixo}<ul>`);
       listarArquivosRecursivamente(caminhoCompleto, lista, prefixo + '  ');
       lista.push(`${prefixo}</ul>`);
