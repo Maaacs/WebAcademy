@@ -1,9 +1,9 @@
 ### Exemplo de Execução
 
-- Nodemon
+- Development nodemon
 
-```npm start ../../css ```
+```npm run start -- ../../css ```
 
-- Prod
+- Production node
 
-```node index ../../css ``` 
+```npm run start:prod -- ../../css``` 
