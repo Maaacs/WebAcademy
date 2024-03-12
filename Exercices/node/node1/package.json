@@ -1,18 +1,16 @@
 {
-<<<<<<< HEAD
   "dependencies": {
     "dotenv": "^16.4.5"
-  }
-=======
+  },
   "name": "node1",
-  "version": "1.0.0",
   "description": "",
+  "version": "1.0.0",
   "main": "index.js",
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node --watch --no-warnings index.js"
+    "start": "node --watch --no-warnings index.js" 
   },
   "author": "",
   "license": "ISC"
->>>>>>> 9870646 (parte 3)
 }
