@@ -1,0 +1,21 @@
+{
+  "type": "module",
+  "dependencies": {
+    "dotenv": "^16.4.5",
+    "lorem-ipsum": "^2.0.8"
+  },
+  "name": "node1",
+  "description": "",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=development nodemon --watch src --no-warnings src/index.js",
+    "start:prod": "NODE_ENV=production node --watch src --no-warnings src/index.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
