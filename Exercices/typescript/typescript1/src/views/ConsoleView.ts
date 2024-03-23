@@ -3,8 +3,12 @@ import { Lembrete } from "../models/Lembrete";
 
 
 export function configurarVisualizacaoLembrete() {
-    document.getElementById('createReminder').addEventListener('click', () => {
+    const elementoCriarLembrete = document.getElementById('createReminder');
+    if (!elementoCriarLembrete) throw new Error("Botão de criar lembrete não encontrado");
+    
+    elementoCriarLembrete.addEventListener('click', () => {
         const entradaTitulo = document.getElementById('reminderTitle') as HTMLInputElement;
+        if (!entradaTitulo) throw new Error("Campo de título do lembrete não encontrado");
         const titulo = entradaTitulo.value.trim();
         
         if (titulo) {
@@ -12,7 +16,7 @@ export function configurarVisualizacaoLembrete() {
 
             if (sucesso) {
               const lembrete = resultado as Lembrete;
-              console.log(`Lembrete criado: ${lembrete.title} às ${lembrete.createdAt}`);
+              //console.log(`Lembrete criado: ${lembrete.title} às ${lembrete.createdAt}`);
               adicionarLembreteNaLista(lembrete);
               entradaTitulo.value = '';
             } else {
@@ -27,8 +31,10 @@ export function configurarVisualizacaoLembrete() {
     });
 }
 
-function adicionarLembreteNaLista(lembrete) {
+function adicionarLembreteNaLista(lembrete: Lembrete) {
     const listaLembretes = document.getElementById('remindersList');
+    if (!listaLembretes) throw new Error("Lista de lembretes não encontrada");
+
     const itemLista = document.createElement('li');
     itemLista.classList.add('list-group-item');
     itemLista.innerHTML = `
@@ -37,24 +43,38 @@ function adicionarLembreteNaLista(lembrete) {
         <button class="btn btn-danger btn-sm ml-2 delete-btn" data-id="${lembrete.id}">Remover</button>
     `;
     listaLembretes.appendChild(itemLista);
+    console.log(`Lembrete criado: ${lembrete.title} às ${lembrete.createdAt}`);
 
-    itemLista.querySelector('.edit-btn').addEventListener('click', () => editarLembrete(lembrete.id, itemLista));
-    itemLista.querySelector('.delete-btn').addEventListener('click', () => removerLembrete(lembrete.id, itemLista));
+    const botaoEditar = itemLista.querySelector('.edit-btn');
+    const botaoRemover = itemLista.querySelector('.delete-btn');
+    if (!botaoEditar || !botaoRemover) throw new Error("Botões de editar/remover não encontrados");
+
+    botaoEditar.addEventListener('click', () => editarLembrete(lembrete.id, itemLista));
+    botaoRemover.addEventListener('click', () => removerLembrete(lembrete.id, itemLista));
 }
 
-function editarLembrete(id, itemLista) {
+function editarLembrete(id: string, itemLista: HTMLElement) {
     const novoTitulo = prompt('Digite o novo título para o lembrete:');
     if (novoTitulo) {
         const [sucesso, resultado] = servicoLembrete.editarLembrete(id, novoTitulo);
         if (sucesso && typeof resultado !== 'string') {
+            const lembrete = resultado as Lembrete;
             const lembreteEditado = resultado;
             itemLista.innerHTML = `
                 ${lembreteEditado.title} - Editado em: ${lembreteEditado.createdAt.toLocaleString()}
                 <button class="btn btn-secondary btn-sm ml-2 edit-btn" data-id="${id}">Editar</button>
                 <button class="btn btn-danger btn-sm ml-2 delete-btn" data-id="${id}">Remover</button>
             `;
-            itemLista.querySelector('.edit-btn').addEventListener('click', () => editarLembrete(id, itemLista));
-            itemLista.querySelector('.delete-btn').addEventListener('click', () => removerLembrete(id, itemLista));
+            console.log(`Lembrete editado: ${lembrete.title} às ${lembrete.createdAt}`);
+            const editBtn = itemLista.querySelector('.edit-btn');
+            const deleteBtn = itemLista.querySelector('.delete-btn');
+            
+            if (editBtn) {
+                editBtn.addEventListener('click', () => editarLembrete(id, itemLista));
+            }
+            if (deleteBtn) {
+                deleteBtn.addEventListener('click', () => removerLembrete(id, itemLista));
+            }
         } else {
             alert(resultado);
         }
@@ -62,7 +82,18 @@ function editarLembrete(id, itemLista) {
 }
 
 
-function removerLembrete(id, itemLista) {
-    servicoLembrete.removerLembrete(id);
-    itemLista.remove();
+function removerLembrete(id: string, itemLista: HTMLElement) {
+    const lembrete = servicoLembrete.buscarLembretePorId(id);
+    
+    if (lembrete) {
+        const [sucesso, mensagem] = servicoLembrete.removerLembrete(id);
+        if (sucesso) {
+            itemLista.remove();
+            console.log(`Lembrete removido: ${lembrete.title} às ${lembrete.createdAt}`);
+        } else {
+            console.error(mensagem);
+        }
+    } else {
+        console.error("Lembrete não encontrado.");
+    }
 }

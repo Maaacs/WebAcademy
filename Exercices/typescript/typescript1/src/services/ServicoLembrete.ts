@@ -40,6 +40,12 @@ class ServicoLembrete {
   private gerarId(): string {
     return Math.random().toString(36).substring(2, 9);
   }
+
+
+  public buscarLembretePorId(id: string): Lembrete | undefined {
+    return this.lembretes.find(lembrete => lembrete.id === id);
+  }
+
 }
 
 export const servicoLembrete = new ServicoLembrete();
