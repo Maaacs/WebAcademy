@@ -1,0 +1,10 @@
+#detalhesTurma, #listaAlunos {
+  margin-top: 1rem;
+  padding: 0 15px; 
+  margin-bottom: 1rem; 
+}
+
+.scrollable-tbody {
+  overflow-y: auto;
+  max-height: 180px; 
+}
