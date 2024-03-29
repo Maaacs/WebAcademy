@@ -1,6 +1,6 @@
-# To-do List
+# Turma Educação Física
 
-Aplicação simples de Lista de Lembretes em TypeScript. 
+Aplicação de estatísticas de uma Turma Educação Física. 
 
 Features:
 
