@@ -14,4 +14,13 @@ export class Cart {
     getProductList(): string[] {
         return this.products.map(product => product.getModel());
     }
+
+    getProducts(): IProduct[] {
+        return this.products;
+    }
+
+    removeProduct(productId: string): void {
+        this.products = this.products.filter(product => product.id !== productId);
+    }
+
 }

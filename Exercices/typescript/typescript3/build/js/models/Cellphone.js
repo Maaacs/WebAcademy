@@ -1,14 +1,13 @@
 import { Product } from "./Product.js";
 export class Cellphone extends Product {
     constructor(model, memory, manufacturer, price) {
-        super(model, price);
+        super(model, price, manufacturer);
         this.memory = memory;
-        this.manufacturer = manufacturer;
     }
     getMemory() {
         return this.memory;
     }
-    getManufacturer() {
-        return this.manufacturer;
+    getDetails() {
+        return `Memory: ${this.memory}`;
     }
 }

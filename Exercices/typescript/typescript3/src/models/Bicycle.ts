@@ -1,18 +1,18 @@
 import { Product } from "./Product.js";
 
 export class Bicycle extends Product {
-    private manufacturer: string;
+    private wheelSize: number;
 
-    constructor(model: string, private wheelSize: number, manufacturer: string, price: number) {
-        super(model, price);
-        this.manufacturer = manufacturer;
+    constructor(model: string, wheelSize: number, manufacturer: string, price: number) {
+        super(model, price, manufacturer);
+        this.wheelSize = wheelSize;
     }
 
     getWheelSize(): number {
         return this.wheelSize;
     }
 
-    getManufacturer(): string {
-        return this.manufacturer;
+    getDetails(): string {
+        return `Wheel Size: ${this.wheelSize}"`;
     }
 }

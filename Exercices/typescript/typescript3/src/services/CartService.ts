@@ -8,15 +8,27 @@ export class CartService {
         this.cart = new Cart();
     }
 
+
     addToCart(product: IProduct): void {
         this.cart.addProduct(product);
     }
+
 
     getTotalPrice(): number {
         return this.cart.getTotalPrice();
     }
 
+
+    getCartDetails(): IProduct[] {
+        return this.cart.getProducts();
+    }
+
+
     getProductList(): string[] {
         return this.cart.getProductList();
+    }
+
+    removeFromCart(productId: string): void {
+        this.cart.removeProduct(productId);
     }
 }

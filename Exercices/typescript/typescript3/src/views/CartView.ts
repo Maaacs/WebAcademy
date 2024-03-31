@@ -2,6 +2,8 @@ import { CartService } from "../services/CartService.js";
 import { TV } from "../models/TV.js";
 import { Cellphone } from "../models/Cellphone.js";
 import { Bicycle } from "../models/Bicycle.js";
+import { IProduct } from "../models/Product.js";
+
 
 export class CartView {
     private cartService: CartService;
@@ -22,14 +24,14 @@ export class CartView {
                 let product;
 
                 switch (productType) {
-                    case 'bicycle':
-                        product = new Bicycle("Bicicleta Modelo X", 26, "BikeCo", 1000);
+                    case 'Bicicleta':
+                        product = new Bicycle("Bicicleta Modelo Yamaha", 26, "BikeCo", 1000);
                         break;
-                    case 'cellphone':
-                        product = new Cellphone("Celular Y", "128GB", "PhoneCo", 500);
+                    case 'Celular':
+                        product = new Cellphone("Celular Motorola", "128GB", "PhoneCo", 500);
                         break;
-                    case 'tv':
-                        product = new TV("TV Z", "4K", 55, "TVC", 1240);
+                    case 'Tv':
+                        product = new TV("TV Samsung", "4K", 55, "TV", 1240);
                         break;
                 }
 
@@ -41,7 +43,7 @@ export class CartView {
         });
     }
 
-    private updateCartView(): void {
+    public updateCartView(): void {
         const productList = this.cartService.getProductList();
         const totalPrice = this.cartService.getTotalPrice();
 
@@ -51,6 +53,72 @@ export class CartView {
         if (cartProductsListElement && cartTotalPriceElement) {
             cartProductsListElement.textContent = productList.length > 0 ? productList.join(", ") : "Nenhum produto adicionado";
             cartTotalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+        }
+        this.renderizarlistaProdutos();
+        this.updateCartCount();
+    }
+
+    private renderizarlistaProdutos(): void {
+        const listaProdutosElement = document.getElementById("listaProdutos");
+        if (!listaProdutosElement) throw new Error("Lista de produtos não encontrada");
+    
+        const produtos = this.cartService.getCartDetails(); 
+        let linhasTabela = '';
+    
+        produtos.forEach((produto: IProduct) => { 
+            linhasTabela += `
+                <tr>
+                    <td>${produto.getModel()}</td>
+                    <td>${produto.getManufacturer()}</td>
+                    <td>${produto.getDetails()}</td> <!-- Alterado para getDetails -->
+                    <td>${produto.getPrice().toFixed(2)}</td>
+                    <td>
+                    <button class="btn btn-danger btn-sm ml-2 delete-btn" data-id="${produto.id}">Remover</button>
+                    </td>
+                </tr>
+            `;
+        });
+        
+        listaProdutosElement.innerHTML = `
+            <div class="scrollable-tbody">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Modelo</th>
+                            <th>Fabricante</th>
+                            <th>Detalhes</th>
+                            <th>Preço</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${linhasTabela}
+                    </tbody>
+                </table>
+            </div>
+        `;
+
+        this.addDeleteButtonEventListeners();
+    }
+
+    private addDeleteButtonEventListeners(): void {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productId = (event.target as HTMLElement).getAttribute('data-id');
+                if (productId) {
+                    this.cartService.removeFromCart(productId);
+                    this.updateCartView();
+                }
+            });
+        });
+    }
+    
+    private updateCartCount(): void {
+        const productCount = this.cartService.getCartDetails().length;
+        const cartCountElement = document.getElementById('cartCount');
+        if (cartCountElement) {
+            cartCountElement.textContent = productCount.toString();
         }
     }
 }

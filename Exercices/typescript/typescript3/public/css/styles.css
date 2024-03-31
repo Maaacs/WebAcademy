@@ -1,0 +1,5 @@
+.scrollable-tbody {
+    overflow-y: auto;
+    max-height: 180px; 
+  }
+  

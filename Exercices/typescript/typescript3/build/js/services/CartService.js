@@ -9,7 +9,13 @@ export class CartService {
     getTotalPrice() {
         return this.cart.getTotalPrice();
     }
+    getCartDetails() {
+        return this.cart.getProducts();
+    }
     getProductList() {
         return this.cart.getProductList();
+    }
+    removeFromCart(productId) {
+        this.cart.removeProduct(productId);
     }
 }

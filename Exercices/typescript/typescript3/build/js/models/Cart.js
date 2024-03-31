@@ -11,4 +11,10 @@ export class Cart {
     getProductList() {
         return this.products.map(product => product.getModel());
     }
+    getProducts() {
+        return this.products;
+    }
+    removeProduct(productId) {
+        this.products = this.products.filter(product => product.id !== productId);
+    }
 }

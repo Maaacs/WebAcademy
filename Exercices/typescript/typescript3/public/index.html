@@ -4,62 +4,135 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loja</title>
+    <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-light bg-light">
-  <a class="navbar-brand" href="#">Loja Virtual</a>
-</nav>
-<div class="container mt-4">
-    <h2 class="mb-4">Produtos:</h2>
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <!-- Bicicleta -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="assets/Bicicleta.jpg" class="card-img-top" alt="Bicicleta">
-                <div class="card-body">
-                    <h5 class="card-title">Bicicleta</h5>
-                    <p class="card-text">R$ 1.000,00</p>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+    <a class="navbar-brand" href="#">Loja Virtual</a>
+    <div class="navbar-nav ml-auto">
+            <div class="nav-item">
+                <a class="nav-link" href="#">
+                    <span id="cartCount" class="badge badge-pill badge-success">0</span>
+                    Carrinho 🛒
+                </a>
+            </div>
+        </div>
+    </nav>
+    <div class="container mt-4">
+        <h2 class="mb-4">Produtos:</h2>
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <!-- Bicicleta -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/Bicicleta.jpg" class="card-img-top" alt="Bicicleta">
+                    <div class="card-body">
+                        <h5 class="card-title">Bicicleta</h5>
+                        <p class="card-text">R$ 1.000,00</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-block" data-product-type="Bicicleta">Adicionar no carrinho</button>
+                        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#novoProdutoModalBicicleta">Novo Produto</button>
+                    </div>
                 </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-block" data-product-type="bicycle">Adicionar no carrinho</button>
+            </div>
+            <!-- Celular -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/Celular.jpg" class="card-img-top" alt="Celular">
+                    <div class="card-body">
+                        <h5 class="card-title">Celular</h5>
+                        <p class="card-text">R$ 500,00</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-block" data-product-type="Celular">Adicionar no carrinho</button>
+                        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#novoProdutoModalCelular">Novo Produto</button>
+                    </div>
+                </div>
+            </div>
+            <!-- TV -->
+            <div class="col">
+                <div class="card h-100">
+                    <img src="assets/Tv.png" class="card-img-top" alt="TV">
+                    <div class="card-body">
+                        <h5 class="card-title">TV 4K</h5>
+                        <p class="card-text">R$ 3.000,00</p>
+                    </div>
+                    <div class="card-footer">
+                        <button type="button" class="btn btn-primary btn-block" data-product-type="Tv">Adicionar no carrinho</button>
+                        <button type="button" class="btn btn-secondary btn-block" data-toggle="modal" data-target="#novoProdutoModalTv">Novo Produto</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Celular -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="assets/Celular.jpg" class="card-img-top" alt="Celular">
-                <div class="card-body">
-                    <h5 class="card-title">Celular</h5>
-                    <p class="card-text">R$ 500,00</p>
-                </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-block" data-product-type="cellphone">Adicionar no carrinho</button>
-                </div>
-            </div>
+        <div id="cartDetails" class="mt-3">
+            <h4>Carrinho de Compras</h4>
+            <p>Produtos no carrinho: <span id="cartProductsList">Nenhum produto adicionado</span></p>
+            <p>Preço total: <span id="cartTotalPrice">$0</span></p>
         </div>
-        <!-- TV -->
-        <div class="col">
-            <div class="card h-100">
-                <img src="assets/Tv.png" class="card-img-top" alt="TV">
-                <div class="card-body">
-                    <h5 class="card-title">TV 4K</h5>
-                    <p class="card-text">R$ 3.000,00</p>
+    </div>
+    <!-- Modal de CadastroBicicleta -->
+    <div class="modal fade" id="novoProdutoModalBicicleta" tabindex="-1" role="dialog" aria-labelledby="novoProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoProdutoBicicletaModalLabel">Cadastrar Bicicleta</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
-                <div class="card-footer">
-                    <button type="button" class="btn btn-primary btn-block" data-product-type="tv">Adicionar no carrinho</button>
+                <div class="modal-body">
+                    <form id="novoProdutoBicicletaForm">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success d-block w-100" onclick="confirmarCadastroBicicleta()">Confirmar Cadastro</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <div id="cartDetails" class="mt-3">
-        <h4>Carrinho de Compras</h4>
-        <p>Produtos no carrinho: <span id="cartProductsList">Nenhum produto adicionado</span></p>
-        <p>Preço total: <span id="cartTotalPrice">$0</span></p>
+    <!-- Modal de CadastroCelular -->
+    <div class="modal fade" id="novoProdutoModalCelular" tabindex="-1" role="dialog" aria-labelledby="novoProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoProdutoCelularModalLabel">Cadastrar Celular</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                 </div>
+                <div class="modal-body">
+                        <form id="novoProdutoCelularForm">
+                    </form>
+                </div>
+                   <div class="modal-footer">
+                        <button type="button" class="btn btn-success d-block w-100" onclick="confirmarCadastroCelular()">Confirmar Cadastro</button>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script type="module" src="../build/js/main.js"></script>
+    <!-- Modal de CadastroTv -->
+    <div class="modal fade" id="novoProdutoModalTv" tabindex="-1" role="dialog" aria-labelledby="novoProdutoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="novoProdutoTvModalLabel">Cadastrar Tv</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="novoProdutoTvForm">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success d-block w-100" onclick="confirmarCadastroTv()">Confirmar Cadastro</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="listaProdutos" class="mt-3"></div>
+    <script type="module" src="../build/js/main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
