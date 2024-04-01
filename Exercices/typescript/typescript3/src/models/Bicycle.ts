@@ -13,6 +13,6 @@ export class Bicycle extends Product {
     }
 
     getDetails(): string {
-        return `Wheel Size: ${this.wheelSize}"`;
+        return `Tamanho do aro: ${this.wheelSize}"`;
     }
 }

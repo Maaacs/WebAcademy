@@ -8,6 +8,6 @@ export class Bicycle extends Product {
         return this.wheelSize;
     }
     getDetails() {
-        return `Wheel Size: ${this.wheelSize}"`;
+        return `Tamanho do aro: ${this.wheelSize}"`;
     }
 }

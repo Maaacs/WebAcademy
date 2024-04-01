@@ -12,6 +12,6 @@ export class TV extends Product {
         return this.size;
     }
     getDetails() {
-        return `Resolution: ${this.resolution}, Size: ${this.size}"`;
+        return `Resolução: ${this.resolution}, Tamanho: ${this.size}"`;
     }
 }

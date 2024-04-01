@@ -13,12 +13,12 @@ export class CartView {
     }
 
     init(): void {
-        this.updateCartView();
+        //this.updateCartView();
         this.bindAddToCartButtons();
     }
 
     private bindAddToCartButtons(): void {
-        document.querySelectorAll('.btn-primary').forEach((button) => {
+        document.querySelectorAll('.btn-adicionar-carrinho').forEach((button) => {
             button.addEventListener('click', (event) => {
                 const productType = (event.target as HTMLElement).getAttribute('data-product-type');
                 let product;
@@ -80,8 +80,8 @@ export class CartView {
         });
         
         listaProdutosElement.innerHTML = `
-            <div class="scrollable-tbody">
-                <table class="table">
+            <div id="listaProdutos" class="mt-3">
+                <table class="table table-hover">
                     <thead>
                         <tr>
                             <th>Modelo</th>
@@ -91,10 +91,14 @@ export class CartView {
                             <th>Ações</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        ${linhasTabela}
-                    </tbody>
                 </table>
+                <div class="scrollable-tbody">
+                    <table class="table">
+                        <tbody>
+                            ${linhasTabela}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         `;
 

@@ -8,6 +8,6 @@ export class Cellphone extends Product {
         return this.memory;
     }
     getDetails() {
-        return `Memory: ${this.memory}`;
+        return `Memória: ${this.memory}`;
     }
 }
