@@ -39,6 +39,10 @@ app.use((0, node_sass_middleware_1.default)({
     prefix: "/css",
 }));
 app.use("/css", express_1.default.static(`${__dirname}/../public/css`));
+app.use('/js', [
+    express_1.default.static(`${__dirname}/../public/js`),
+    express_1.default.static(`${__dirname}/../node_modules/bootstrap/dist/js/`)
+]);
 app.listen(PORT, () => {
     console.log(`Express app iniciada na porta ${PORT}.`);
 });

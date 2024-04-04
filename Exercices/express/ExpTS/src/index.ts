@@ -44,6 +44,11 @@ app.use(sass({
 }));
 app.use("/css", express.static(`${__dirname}/../public/css`));
 
+app.use('/js', [
+    express.static(`${__dirname}/../public/js`),
+    express.static(`${__dirname}/../node_modules/bootstrap/dist/js/`)
+]);
+
 
 app.listen(PORT, () => {
  console.log(`Express app iniciada na porta ${PORT}.`);
