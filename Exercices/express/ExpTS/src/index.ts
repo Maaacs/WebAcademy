@@ -5,6 +5,7 @@ import router from './router/router';
 import { engine } from 'express-handlebars';
 import { nodejsTechnologies } from './views/helpers/helpers';
 import path from 'path';
+import sass from 'node-sass-middleware';
 
 const app = express();
 
@@ -31,6 +32,17 @@ app.engine("handlebars", engine({
 }));*/
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
+app.use('/img', [
+    express.static(`${__dirname}/public/img`)
+]);
+
+app.use(sass({
+    src: `${__dirname}/../public/scss`,
+    dest: `${__dirname}/../public/css`,
+    outputStyle: "compressed",
+    prefix: "/css",
+}));
+app.use("/css", express.static(`${__dirname}/../public/css`));
 
 
 app.listen(PORT, () => {

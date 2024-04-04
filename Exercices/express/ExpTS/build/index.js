@@ -10,6 +10,7 @@ const router_1 = __importDefault(require("./router/router"));
 const express_handlebars_1 = require("express-handlebars");
 const helpers_1 = require("./views/helpers/helpers");
 const path_1 = __importDefault(require("path"));
+const node_sass_middleware_1 = __importDefault(require("node-sass-middleware"));
 const app = (0, express_1.default)();
 app.use(logAccess_1.default);
 app.use(router_1.default);
@@ -28,6 +29,16 @@ app.engine("handlebars", (0, express_handlebars_1.engine)({
 }));*/
 app.set('view engine', 'handlebars');
 app.set('views', path_1.default.join(__dirname, '..', 'src', 'views'));
+app.use('/img', [
+    express_1.default.static(`${__dirname}/public/img`)
+]);
+app.use((0, node_sass_middleware_1.default)({
+    src: `${__dirname}/../public/scss`,
+    dest: `${__dirname}/../public/css`,
+    outputStyle: "compressed",
+    prefix: "/css",
+}));
+app.use("/css", express_1.default.static(`${__dirname}/../public/css`));
 app.listen(PORT, () => {
     console.log(`Express app iniciada na porta ${PORT}.`);
 });
