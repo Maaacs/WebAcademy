@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import logAccess from "./middleware/logAccess";
 import router from './router/router';
 import { engine } from 'express-handlebars';
+import { nodejsTechnologies } from './views/helpers/helpers';
 import path from 'path';
 
 const app = express();
@@ -14,11 +15,20 @@ dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
 const PORT = process.env.PORT || 3333;
 
 
+const helpers = {
+    nodejsTechnologies, 
+};
 
-app.engine("handlebars", engine(  {
-    layoutsDir: `${__dirname}/../src/views/layouts`,
-    defaultLayout: 'main',
+app.engine("handlebars", engine({
+    helpers: helpers, // helpers personalizado
 }));
+
+
+/*app.engine("handlebars", engine(  {
+    helpers: require(`${__dirname}/views/helpers/helpers.ts`)
+    //layoutsDir: `${__dirname}/../src/views/layouts`,
+    //defaultLayout: 'main',
+}));*/
 app.set('view engine', 'handlebars');
 app.set('views', path.join(__dirname, '..', 'src', 'views'));
 
