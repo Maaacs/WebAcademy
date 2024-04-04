@@ -12,10 +12,9 @@ const helpers_1 = require("./views/helpers/helpers");
 const path_1 = __importDefault(require("path"));
 const node_sass_middleware_1 = __importDefault(require("node-sass-middleware"));
 const app = (0, express_1.default)();
-app.use(logAccess_1.default);
-app.use(router_1.default);
 dotenv_1.default.config({ path: `.env.${process.env.NODE_ENV}` });
-const PORT = process.env.PORT || 3333;
+app.use(express_1.default.urlencoded({ extended: false }));
+app.use(logAccess_1.default);
 const helpers = {
     nodejsTechnologies: helpers_1.nodejsTechnologies,
 };
@@ -43,6 +42,8 @@ app.use('/js', [
     express_1.default.static(`${__dirname}/../public/js`),
     express_1.default.static(`${__dirname}/../node_modules/bootstrap/dist/js/`)
 ]);
+app.use(router_1.default);
+const PORT = process.env.PORT || 3333;
 app.listen(PORT, () => {
     console.log(`Express app iniciada na porta ${PORT}.`);
 });

@@ -9,12 +9,10 @@ import sass from 'node-sass-middleware';
 
 const app = express();
 
-app.use(logAccess);
-app.use(router);
-
 dotenv.config({ path: `.env.${process.env.NODE_ENV}` });
-const PORT = process.env.PORT || 3333;
 
+app.use(express.urlencoded({ extended: false }));
+app.use(logAccess)
 
 const helpers = {
     nodejsTechnologies, 
@@ -42,6 +40,7 @@ app.use(sass({
     outputStyle: "compressed",
     prefix: "/css",
 }));
+
 app.use("/css", express.static(`${__dirname}/../public/css`));
 
 app.use('/js', [
@@ -49,6 +48,9 @@ app.use('/js', [
     express.static(`${__dirname}/../node_modules/bootstrap/dist/js/`)
 ]);
 
+app.use(router);
+
+const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, () => {
  console.log(`Express app iniciada na porta ${PORT}.`);
