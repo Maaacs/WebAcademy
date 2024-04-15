@@ -1,0 +1,13 @@
+<div class='container mt-4'>
+  <h1 class='mb-3'>Detalhes do Produto</h1>
+  <ul class='list-group'>
+    <li class='list-group-item'>ID: {{produto.id}}</li>
+    <li class='list-group-item'>Nome: {{produto.nome}}</li>
+    <li class='list-group-item'>Preço: {{produto.preco}}</li>
+    <li class='list-group-item'>Estoque: {{produto.estoque}}</li>
+  </ul>
+  <div class='mt-3'>
+    <a class='btn btn-primary' href='/produto/update/{{produto.id}}'>Editar</a>
+    <a class='btn btn-secondary' href='/produto'>Voltar à Lista</a>
+  </div>
+</div>

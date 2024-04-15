@@ -1,125 +1,70 @@
-## Iniciando a Aplicação
+#### Pré-requisitos
 
-1. Inicie o `json-server` na porta `3355` (ou outra porta de sua preferência):
-    ```sh
-    npm run start:db
-    ```
+- Node.js instalado
 
-2. Em outro terminal, inicie a aplicação Express na porta definida no seu arquivo `.env` (por padrão, `3333`):
-    ```sh
-    npm start
-    ```
+#### Instalação
 
-## Rotas
+1. **Clone o repositório**
 
-### Página Inicial
+   Comece clonando o repositório para sua máquina local.
 
-- **Rota**: `/`
-- **Método HTTP**: `GET`
-- **Descrição**: Exibe a página principal do site.
+   ```bash
+   git clone https://github.com/Maaacs/WebAcademy/
+   cd WebAcademy/Exercices/express/ExpTS
+   ```
 
-### Sobre
+2. **Instale as dependências**
 
-- **Rota**: `/sobre`
-- **Método HTTP**: `GET`
-- **Descrição**: Exibe a página sobre.
+   Instale as dependências necessárias.
 
-### Lorem Ipsum
+   ```bash
+   npm install
+   ```
 
-- **Rota**: `/lorem/:num`
-- **Método HTTP**: `GET`
-- **Descrição**: Gera `:num` parágrafos de texto Lorem Ipsum.
+3. **Configure as variáveis de ambiente**
 
-### Handlebars Exemplos
+   Copie o arquivo de ambiente de exemplo e defina as variáveis de ambiente necessárias.
 
-#### hb1
+   ```bash
+   cp .env.development.example .env.development
+   cp .env.production.example .env.production
+   ```
 
-- **Rota**: `/hb1`
-- **Método HTTP**: `GET`
-- **Descrição**: Exemplo básico usando Handlebars.
+   Certifique-se de criar um diretório `logs` conforme especificado pelo `LOGS_DIR` no seu arquivo de ambiente, caso ele não exista.
 
-#### hb2
+   ```bash
+   mkdir logs
+   ```
 
-- **Rota**: `/hb2`
-- **Método HTTP**: `GET`
-- **Descrição**: Exemplo com condições usando Handlebars.
+4. **Construa a aplicação**
 
-#### hb3
+   Compile os arquivos TypeScript.
 
-- **Rota**: `/hb3`
-- **Método HTTP**: `GET`
-- **Descrição**: Exemplo listando informações com Handlebars.
+   ```bash
+   npm run build
+   ```
 
-#### hb4
+#### Executando a Aplicação
 
-- **Rota**: `/hb4`
-- **Método HTTP**: `GET`
-- **Descrição**: Exemplo filtrando e exibindo tecnologias baseadas no NodeJS com Handlebars.
+- **Modo de Desenvolvimento**
 
----
+  Para executar a aplicação no modo de desenvolvimento, use:
 
-## Uso do CRUD
+  ```bash
+  npm start
+  ```
 
-Operações CRUD para produtos:
+  Isso iniciará a aplicação usando `nodemon` para recarregar automaticamente em caso de mudanças.
 
-### Criar Produto
+- **Modo de Produção**
 
-- **Método HTTP**: `POST`
-- **URL**: `http://localhost:3355/produtos`
-- **Corpo da Requisição (JSON)**:
-    ```json
-    {
-      "nome": "Nome do Produto",
-      "preco": 100.00,
-      "estoque": 10
-    }
-    ```
+  Para executar a aplicação no modo de produção, use:
 
-    **Comando cURL**:
-    ```sh
-    curl -X POST http://localhost:3355/produtos \
-    -H "Content-Type: application/json" \
-    -d '{"nome": "Nome do Produto", "preco": 100.00, "estoque": 10}'
-    ```
+  ```bash
+  npm run start:prod
+  ```
 
-### Ler Produto
+#### Funcionalidades
 
-- **Método HTTP**: `GET`
-- **URL**: `http://localhost:3355/produtos/{id}`
-
-    **Comando cURL**:
-    ```sh
-    curl http://localhost:3355/produtos/{id}
-    ```
-
-### Atualizar Produto
-
-- **Método HTTP**: `PUT`
-- **URL**: `http://localhost:3355/produtos/{id}`
-- **Corpo da Requisição (JSON)**:
-    ```json
-    {
-      "nome": "Nome do Produto Atualizado",
-      "preco": 120.00,
-      "estoque": 8
-    }
-    ```
-
-    **Comando cURL**:
-    ```sh
-    curl -X PUT http://localhost:3355/produtos/{id} \
-    -H "Content-Type: application/json" \
-    -d '{"nome": "Nome do Produto Atualizado", "preco": 120.00, "estoque": 8}'
-    ```
-
-### Deletar Produto
-
-- **Método HTTP**: `DELETE`
-- **URL**: `http://localhost:3355/produtos/{id}`
-
-    **Comando cURL**:
-    ```sh
-    curl -X DELETE http://localhost:3355/produtos/{id}
-    ```
-
----
+- Operações CRUD para produtos armazenados em um banco de dados JSON mock
+- Geração dinâmica de texto Lorem Ipsum

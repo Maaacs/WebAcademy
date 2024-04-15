@@ -18,7 +18,7 @@ app.use(logAccess_1.default);
 const helpers = {
     nodejsTechnologies: helpers_1.nodejsTechnologies,
 };
-app.engine("handlebars", (0, express_handlebars_1.engine)({
+app.engine('handlebars', (0, express_handlebars_1.engine)({
     helpers: helpers, // helpers personalizado
 }));
 /*app.engine("handlebars", engine(  {
@@ -28,19 +28,17 @@ app.engine("handlebars", (0, express_handlebars_1.engine)({
 }));*/
 app.set('view engine', 'handlebars');
 app.set('views', path_1.default.join(__dirname, '..', 'src', 'views'));
-app.use('/img', [
-    express_1.default.static(`${__dirname}/public/img`)
-]);
+app.use('/img', [express_1.default.static(`${__dirname}/public/img`)]);
 app.use((0, node_sass_middleware_1.default)({
     src: `${__dirname}/../public/scss`,
     dest: `${__dirname}/../public/css`,
-    outputStyle: "compressed",
-    prefix: "/css",
+    outputStyle: 'compressed',
+    prefix: '/css',
 }));
-app.use("/css", express_1.default.static(`${__dirname}/../public/css`));
+app.use('/css', express_1.default.static(`${__dirname}/../public/css`));
 app.use('/js', [
     express_1.default.static(`${__dirname}/../public/js`),
-    express_1.default.static(`${__dirname}/../node_modules/bootstrap/dist/js/`)
+    express_1.default.static(`${__dirname}/../node_modules/bootstrap/dist/js/`),
 ]);
 app.use(router_1.default);
 const PORT = process.env.PORT || 3333;

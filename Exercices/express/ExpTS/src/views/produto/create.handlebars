@@ -1,0 +1,30 @@
+<div class='container mt-4'>
+  <h1 class='mb-3'>Adicionar Produto</h1>
+  <form method='POST' action='/produto/create'>
+    <div class='mb-3'>
+      <label for='nome' class='form-label'>Nome:</label>
+      <input type='text' class='form-control' id='nome' name='nome' required />
+    </div>
+    <div class='mb-3'>
+      <label for='preco' class='form-label'>Preço:</label>
+      <input
+        type='number'
+        class='form-control'
+        id='preco'
+        name='preco'
+        required
+      />
+    </div>
+    <div class='mb-3'>
+      <label for='estoque' class='form-label'>Estoque:</label>
+      <input
+        type='number'
+        class='form-control'
+        id='estoque'
+        name='estoque'
+        required
+      />
+    </div>
+    <button type='submit' class='btn btn-success'>Salvar Produto</button>
+  </form>
+</div>

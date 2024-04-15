@@ -2,7 +2,7 @@ import { Request, Response, NextFunction } from 'express';
 import fs from 'fs';
 import path from 'path';
 
-const logAccess = (req: Request, res: Response, next: NextFunction) => {
+const logAccess = (req: Request, res: Response, next: NextFunction): void => {
   const logFormat = process.env.LOG_FORMAT || 'simples';
   const logDir = process.env.LOGS_DIR || './logs';
   const logFile = path.join(logDir, 'access.log');
@@ -12,7 +12,7 @@ const logAccess = (req: Request, res: Response, next: NextFunction) => {
     logMessage += `, ${req.httpVersion}, ${req.get('User-Agent')}`;
   }
 
-  fs.appendFile(logFile, logMessage + '\n', err => {
+  fs.appendFile(logFile, logMessage + '\n', (err) => {
     if (err) {
       console.error('Erro ao escrever no arquivo de log', err);
     }

@@ -1,0 +1,29 @@
+<div class='container mt-5'>
+  <h1 class='mb-4 text-center'>Buscar Produto por ID</h1>
+  <div class='row'>
+    <div class='col-md-6 offset-md-3'>
+      <form id='searchForm' action='' method='get'>
+        <div class='form-group mb-3'>
+          <label for='idProduct' class='form-label'>ID do Produto:</label>
+          <input
+            type='number'
+            class='form-control'
+            id='idProduct'
+            name='idProduct'
+            required
+          />
+        </div>
+        <div class='d-grid gap-2'>
+          <button type='submit' class='btn btn-primary'>Buscar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('searchForm').addEventListener('submit',
+  function(event) { var idProduct = document.getElementById('idProduct').value;
+  if (idProduct) { this.action = '/produto/read/' + idProduct; } else {
+  event.preventDefault(); } });
+</script>
