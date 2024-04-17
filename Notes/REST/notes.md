@@ -10,3 +10,12 @@
 `npm install -D typescript "@types/node" "@types/express" ts-node`
 
 `tsc --init`
+
+### prisma
+`npm install -D prisma`
+`npm install @prisma/client`
+`npx prisma init --datasource-provider mysql`
+`npx prisma migrate dev --name init`
+
+### docker
+`mysql --host=127.0.0.1 --port=3307 -u root -p`
