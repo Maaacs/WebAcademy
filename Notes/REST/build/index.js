@@ -6,10 +6,12 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const dotenv_1 = __importDefault(require("dotenv"));
 const validateEnv_1 = __importDefault(require("../src/utils/validateEnv"));
+const router_1 = __importDefault(require("./router"));
+dotenv_1.default.config();
+(0, validateEnv_1.default)();
 const app = (0, express_1.default)();
-app.use(validateEnv_1.default);
-dotenv_1.default.config({ path: `.env.${process.env.NODE_ENV}` });
 const PORT = process.env.PORT ?? 444;
+app.use(router_1.default);
 app.get("/", (req, res) => {
     res.json({ msg: "oi" });
 });
