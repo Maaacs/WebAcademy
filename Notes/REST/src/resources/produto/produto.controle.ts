@@ -2,7 +2,7 @@ import {Request, Response} from "express"
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 
 import { CreateProdutoDto } from "./produto.types"
-import { checkNomeIsAvailable, createProduto, listProdutos } from "./produto.service"
+import { checkNomeIsAvailable, createProduto, listProdutos, readProduto } from "./produto.service"
 
 
 const index = async (req: Request, res: Response) =>{
@@ -27,7 +27,21 @@ const create = async (req: Request, res: Response) =>{
         res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
     }
 };
-const read = async (req: Request, res: Response) =>{}
+
+const read = async (req: Request, res: Response) =>{
+    const id = req.params.id;
+    try {
+        const produto = await readProduto(id);
+        if (!produto){
+           return res.status(StatusCodes.NOT_FOUND).json(ReasonPhrases.NOT_FOUND)
+        }else{
+            res.status(StatusCodes.OK).json(produto)
+        }
+    }catch (error){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
+    }
+};
+
 const update = async (req: Request, res: Response) =>{}
 const remove = async (req: Request, res: Response) =>{}
 

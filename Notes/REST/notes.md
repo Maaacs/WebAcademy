@@ -16,6 +16,7 @@
 `npm install @prisma/client`
 `npx prisma init --datasource-provider mysql`
 `npx prisma migrate dev --name init`
+`npx prisma migrate dev --name create-produto-table`
 
 ### docker
 `mysql --host=127.0.0.1 --port=3307 -u root -p`

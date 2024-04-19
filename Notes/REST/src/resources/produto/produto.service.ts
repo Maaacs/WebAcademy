@@ -16,3 +16,7 @@ export const createProduto = async (
 export const listProdutos = async (): Promise<Produto[]> => {
     return await prisma.produto.findMany();
 };
+
+export const readProduto = async (id: string): Promise<Produto | null> => {
+    return await prisma.produto.findUnique({ where: { id } });
+};
