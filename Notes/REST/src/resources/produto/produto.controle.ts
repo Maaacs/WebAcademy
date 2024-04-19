@@ -2,12 +2,18 @@ import {Request, Response} from "express"
 import { StatusCodes, ReasonPhrases } from 'http-status-codes';
 
 import { CreateProdutoDto } from "./produto.types"
-import { checkNomeIsAvailable, createProduto } from "./produto.service"
+import { checkNomeIsAvailable, createProduto, listProdutos } from "./produto.service"
 
 
 const index = async (req: Request, res: Response) =>{
-    res.json("lista produtos")
-}
+    try{
+        const produtos = await listProdutos();
+        res.status(StatusCodes.OK).json(produtos)
+    } catch (error){
+        res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(error)
+    }
+};
+
 const create = async (req: Request, res: Response) =>{
     const produto = req.body as CreateProdutoDto;
     try {
