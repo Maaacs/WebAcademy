@@ -20,3 +20,7 @@
 
 ### docker
 `mysql --host=127.0.0.1 --port=3307 -u root -p`
+
+### joi
+validação com joi
+`npx ts-node src/resources/produto/produto.schemes.ts `

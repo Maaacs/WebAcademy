@@ -11,6 +11,7 @@ dotenv_1.default.config();
 (0, validateEnv_1.default)();
 const app = (0, express_1.default)();
 const PORT = process.env.PORT ?? 444;
+app.use(express_1.default.json());
 app.use(router_1.default);
 app.get("/", (req, res) => {
     res.json({ msg: "oi" });
