@@ -27,38 +27,38 @@ npx prisma migrate dev --name init
 ### Criar Cliente e Endereço Aleatórios
 Para criar um cliente e endereço com dados aleatórios:
 ```bash
-npx ts-node src/crud/crud_cliente_endereco.ts
+npx ts-node src/crud/cliente_endereco.ts
 ```
 
 ### Atualizar Endereço
-Para atualizar um endereço existente, descomente e modifique a chamada de função no arquivo `crud_cliente_endereco.ts` conforme necessário:
+Para atualizar um endereço existente, descomente e modifique a chamada de função no arquivo `cliente_endereco.ts` conforme necessário:
 ```typescript
 // Exemplo: Atualiza o endereço de ID 1 para o cliente de ID 1
 updateEndereco(1, 1, 'Rua Nova');
 ```
 Execute com:
 ```bash
-npx ts-node src/crud/crud_cliente_endereco.ts
+npx ts-node src/crud/cliente_endereco.ts
 ```
 
 ### Deletar Cliente
-Para deletar um cliente e seus endereços associados, descomente e ajuste a chamada de função no arquivo `crud_cliente_endereco.ts`:
+Para deletar um cliente e seus endereços associados, descomente e ajuste a chamada de função no arquivo `cliente_endereco.ts`:
 ```typescript
 // Exemplo: Deleta o cliente de ID 2
 deleteCliente(2);
 ```
 Execute com:
 ```bash
-npx ts-node src/crud/crud_cliente_endereco.ts
+npx ts-node src/crud/cliente_endereco.ts
 ```
 
 ### Ler Clientes e Endereços
-Para ler e listar todos os clientes e seus endereços, descomente a chamada de função no arquivo `crud_cliente_endereco.ts`:
+Para ler e listar todos os clientes e seus endereços, descomente a chamada de função no arquivo `cliente_endereco.ts`:
 ```typescript
 // Lê e lista todos os clientes e seus endereços
 readClientesEnderecos();
 ```
 Execute com:
 ```bash
-npx ts-node src/crud/crud_cliente_endereco.ts
+npx ts-node src/crud/cliente_endereco.ts
 ```
