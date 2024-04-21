@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+
+model Cliente {
+  id_cliente   Int      @id @default(autoincrement())
+  nome_completo String
+  cpf          String    @unique
+  celular      String
+  email         String    @unique
+  data_nascimento DateTime
+  enderecos    Endereco[]
+  compras   Compra[]
+}
+
+model Endereco {
+  id_endereco Int     @id @default(autoincrement())
+  id_cliente  Int
+  logradouro  String
+  numero      Int
+  complemento String?
+  cidade      String
+  estado      String
+  cep         String
+  cliente     Cliente   @relation(fields: [id_cliente], references: [id_cliente])
+  compras   Compra[] 
+}
+
+model Categoria {
+  id_categoria   Int       @id @default(autoincrement())
+  nome          String
+  subcategorias Subcategoria[]
+}
+
+model Subcategoria {
+  id_subcategoria Int       @id @default(autoincrement())
+  id_categoria   Int
+  nome          String
+  categoria      Categoria  @relation(fields: [id_categoria], references: [id_categoria])
+  produtos       Produto[]
+}
+
+model NumeroSerie {
+  id_num_serie Int      @id @default(autoincrement())
+  id_produto   Int
+  numero_serie String   @unique
+  produto      Produto  @relation(fields: [id_produto], references: [id_produto])
+}
+
+model ItemCompra {
+  id_item_compra Int      @id @default(autoincrement())
+  id_compra      Int
+  id_produto     Int
+  quantidade     Int
+  preco_venda     Decimal
+  compra         Compra    @relation(fields: [id_compra], references: [id_compra])
+  produto        Produto   @relation(fields: [id_produto], references: [id_produto])
+}
+
+model Produto {
+  id_produto        Int            @id @default(autoincrement())
+  id_subcategoria   Int
+  modelo           String
+  fabricante       String
+  preco_base        Decimal
+  quantidade_disponivel Int
+  subcategoria      Subcategoria    @relation(fields: [id_subcategoria], references: [id_subcategoria])
+  numerosSerie     NumeroSerie[]
+  itemCompras       ItemCompra[]
+}
+
+model Compra {
+  id_compra      Int          @id @default(autoincrement())
+  id_cliente     Int
+  id_endereco    Int
+  data_hora      DateTime
+  desconto       Decimal?
+  forma_pagamento String
+  total          Decimal
+  cliente        Cliente      @relation(fields: [id_cliente], references: [id_cliente])
+  endereco       Endereco    @relation(fields: [id_endereco], references: [id_endereco])
+  itemCompras    ItemCompra[]
+}
