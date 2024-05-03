@@ -5,7 +5,8 @@ services:
     build:
       context: ./backend
     volumes:
-      - ./backend/src:/app/src
+      #- ./backend/src:/app/src
+      - ./backend:/app #apenas para desenvolvimento (evitar recriar a imagem ao modificar o código fonte)
     ports:
       - ${BACKEND_PORT}:${BACKEND_PORT}
   frontend:
@@ -13,7 +14,8 @@ services:
     build:
       context: ./frontend
     volumes:
-      - ./frontend/src:/app/src
+      #- ./frontend/src:/app/src
+      - ./frontend:/app #apenas para desenvolvimento (evitar recriar a imagem ao modificar o código fonte)
     ports:
       - ${FRONTEND_PORT}:${FRONTEND_PORT}
   db:
