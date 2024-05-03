@@ -9,7 +9,7 @@
     "build": "npx tsc",
     "start:prod": "node build/index.js",
     "deploy": "npx prisma migrate deploy",
-    "migrate": "docker exec backend_loja npx prisma migrate"
+    "migrate": "docker exec backend_loja npx prisma migrate dev --name"
   },
   "keywords": [],
   "author": "",
