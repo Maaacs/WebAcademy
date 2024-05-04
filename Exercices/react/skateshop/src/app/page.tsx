@@ -1,19 +1,20 @@
-"use client";
-import Image from "next/image";
-import React from "react";
+"use client"
+
 import { ListagemProdutos } from "./components/ListagemProdutos";
+import { mockProdutos } from "./mocks/produtos";
 import { ResumoCarrinho } from "./components/ResumoCarrinho";
 
 
 export default function Produtos() {
-  const nomeProduto = "Notebook 1";
+  const produtos = mockProdutos;
 
   return (
     <>
       <main>
         <div className="container p-5">
-          <ResumoCarrinho />
-          <ListagemProdutos />
+          <ResumoCarrinho quantidadeItensTotal={2} precoTotal={1300}/>
+
+          <ListagemProdutos produtos={produtos} />
         </div>
       </main>
     </>

@@ -9,7 +9,7 @@ export default function Carrinho() {
       <main>
         <div className="container p-5">
           <ItemCarrinho />
-          <ResumoCarrinho />
+          <ResumoCarrinho quantidadeItensTotal={2} precoTotal={1300}/>
         </div>
       </main>
     </>
