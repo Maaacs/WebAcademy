@@ -4,3 +4,6 @@
 
 ## Cria um volume dentro do container
 ```docker run -v /home/max/WebAcademy/Exercices/ExpAPI/backend/src:/app/src -p4466:466 -d backend_loja```
+
+## Criar as seeds
+```docker exec backend_loja npx prisma db seed```
