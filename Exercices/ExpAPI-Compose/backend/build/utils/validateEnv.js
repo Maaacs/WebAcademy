@@ -5,6 +5,7 @@ const validateEnv = () => {
     (0, envalid_1.cleanEnv)(process.env, {
         NODE_ENV: (0, envalid_1.str)(),
         PORT: (0, envalid_1.port)(),
+        DEFAULT_LANG: (0, envalid_1.str)({ choices: ['pt-BR', 'en-US'] })
     });
 };
 exports.default = validateEnv;
