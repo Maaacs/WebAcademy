@@ -10,3 +10,10 @@
 
 ## Subir nova migration pro container
 ```docker exec backend_loja npx prisma migrate dev --name [nome_migration]```
+
+
+## Gerar documentação swagger
+```npm run swagger```
+
+## Acessar documentação das APIs com swagger
+```http://localhost:4466/api```

@@ -8,11 +8,35 @@ import usuarioRouter from '../resources/usuario/usuario.router';
 
 const router = Router()
 
-router.use('/', authRouter);
-router.use("/produto", produtoRouter); // quando começar com /produto chama produto.router.ts
-router.use("/compra", compraRouter);
-router.use("/language", languageRouter); // quando começar com /language chama language.router.ts 
-router.use("/usuario", usuarioRouter);  
+router.use(
+    "/auth",
+     authRouter
+    // #swagger.tags = ['Auth']
+);
+
+router.use(
+    "/produto",
+    // #swagger.tags = ['Produto']
+    produtoRouter
+); // quando começar com /produto chama produto.router.ts
+
+router.use(
+    "/compra",
+    // #swagger.tags = ['Compra']
+    compraRouter
+);
+
+router.use(
+    "/language",
+    // #swagger.tags = 'Language'] 
+    languageRouter
+); // quando começar com /language chama language.router.ts 
+
+router.use(
+    "/usuario",
+     usuarioRouter
+    // #swagger.tags = ['Usuario']
+);  
 
 
 export default router;

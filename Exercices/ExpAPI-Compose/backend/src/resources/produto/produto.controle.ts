@@ -5,6 +5,30 @@ import { CreateProdutoDto, UpdateProdutoDto } from "./produto.types"
 import { checkNomeIsAvailable, createProduto, listProdutos, readProduto, updateProduto, deleteProduto } from "./produto.service"
 
 const index = async (req: Request, res: Response) =>{
+    /*
+        #swagger.summary = "Lista todos os produtos"
+        #swagger.description = "Retorna uma lista de todos os produtos disponíveis no banco de dados."
+        #swagger.parameters['skip'] = {
+            in: 'query',
+            description: 'Número de produtos para pular para paginação',
+            type: 'integer',
+            required: false
+        }
+        #swagger.parameters['take'] = {
+            in: 'query',
+            description: 'Quantidade de produtos para retornar para paginação',
+            type: 'integer',
+            required: false
+        }
+        #swagger.responses[200] = { 
+            description: "Lista de produtos retornada com sucesso.",
+            schema: { 
+                type: "array",
+                items: { $ref: "#/definitions/Produto" }
+            }
+        }
+        #swagger.responses[500] = { description: "Erro interno no servidor." }
+    */
     const skip = req.query.skip ? parseInt(req.query.skip?.toString()) : undefined;
     const take = req.query.skip ? parseInt(req.query.skip?.toString()) : undefined;
     try{
@@ -16,6 +40,13 @@ const index = async (req: Request, res: Response) =>{
 };
 
 const create = async (req: Request, res: Response) =>{
+    /*
+        #swagger.summary = "Adiciona um produto no banco"
+        #swagger.parameters['body'] = {
+            in: 'body',
+            schema: { $ref: "#definitions/CreateProdutoDto" }
+        }
+    */
     const produto = req.body as CreateProdutoDto;
     try {
         if (await checkNomeIsAvailable(produto.nome)){
@@ -30,6 +61,15 @@ const create = async (req: Request, res: Response) =>{
 };
 
 const read = async (req: Request, res: Response) =>{
+    /*
+        #swagger.summary = "Retorna um produto"
+        #swagger.parameters['id'] = {
+            description: "ID do produto",
+        }
+        #swagger.responses[200] = {
+            schema: { $ref: "#definitions/Produto" }
+        }
+    */
     const id = req.params.id;
     try {
         const produto = await readProduto(id);
@@ -44,6 +84,24 @@ const read = async (req: Request, res: Response) =>{
 };
 
 const update = async (req: Request, res: Response) =>{
+    /*
+        #swagger.summary = "Atualiza um produto existente"
+        #swagger.description = "Atualiza informações de um produto existente com base no ID fornecido."
+        #swagger.parameters['id'] = {
+            in: 'path',
+            required: true,
+            description: 'ID do produto a ser atualizado'
+        }
+        #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'Dados para atualizar o produto',
+            schema: { $ref: "#/definitions/UpdateProdutoDto" }
+        }
+        #swagger.responses[200] = { description: "Produto atualizado com sucesso." }
+        #swagger.responses[404] = { description: "Produto não encontrado." }
+        #swagger.responses[409] = { description: "Conflito: Nome do produto já em uso." }
+        #swagger.responses[500] = { description: "Erro interno no servidor." }
+    */
     const { id } = req.params;
     const produto = req.body as UpdateProdutoDto;
     try {
@@ -59,6 +117,18 @@ const update = async (req: Request, res: Response) =>{
 };
 
 const remove = async (req: Request, res: Response) =>{
+    /*
+        #swagger.summary = "Remove um produto do banco"
+        #swagger.description = "Remove um produto do banco de dados com base no ID fornecido."
+        #swagger.parameters['id'] = {
+            in: 'path',
+            required: true,
+            description: 'ID do produto a ser removido'
+        }
+        #swagger.responses[200] = { description: "Produto removido com sucesso." }
+        #swagger.responses[404] = { description: "Produto não encontrado." }
+        #swagger.responses[500] = { description: "Erro interno no servidor." }
+    */
     const { id } = req.params;
     try {
         const produto = await deleteProduto(id);
