@@ -13,6 +13,7 @@ declare module "express-session" {
     interface SessionData {
         uid: string;
         tipoUsuario: string
+        carrinhoCompras: string[]
     }
 }
 

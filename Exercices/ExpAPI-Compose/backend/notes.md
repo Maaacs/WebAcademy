@@ -7,3 +7,6 @@
 
 ## Criar as seeds
 ```docker exec backend_loja npx prisma db seed```
+
+## Subir nova migration pro container
+```docker exec backend_loja npx prisma migrate dev --name [nome_migration]```
