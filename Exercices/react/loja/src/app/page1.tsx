@@ -7,26 +7,20 @@ import { ResumoCarrinho } from "./components/ResumoCarrinho";
 
 export default function Produtos() {
   //#mock const produtos = mockProdutos;
-
   const [produtos, setProdutos] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          "https://ranekapi.origamid.dev/json/api/produto"
-        );
-        const json = await response.json();
-        setProdutos(json);
+    fetch("https://ranekapi.origamid.dev/json/api/produto")
+      .then((response) => response.json())
+      .then((data) => {
+        setProdutos(data);
         setLoading(false);
-      } catch (error) {
+      })
+      .catch((error) => {
         console.error("Error fetching products:", error);
         setLoading(false);
-      }
-    };
-
-    fetchData();
+      });
   }, []);
 
   return (

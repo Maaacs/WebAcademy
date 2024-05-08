@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body>
-        <Navbar />  
+        <Navbar />
         {children}
         <BootstrapClient />
       </body>
