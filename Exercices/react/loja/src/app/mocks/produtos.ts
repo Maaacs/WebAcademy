@@ -1,4 +1,4 @@
-export const mockProdutos: Produto[] = [
+/*export const mockProdutos: Produto[] = [
     {
       id: "notebook-3",
       fotos: [
@@ -151,4 +151,4 @@ export const mockProdutos: Produto[] = [
       vendido: "false",
       usuario_id: "maria@origamid.com",
     },
-  ];
+  ];*/
