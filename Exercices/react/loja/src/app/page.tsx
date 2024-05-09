@@ -1,15 +1,14 @@
 "use client";
 import { useEffect, useState } from "react";
-
 import { ListagemProdutos } from "./components/ListagemProdutos";
 import { ResumoCarrinho } from "./components/ResumoCarrinho";
-//#mock import { mockProdutos } from "./mocks/produtos";
+import { Produto } from "./types/produto";
 
 export default function Produtos() {
-  //#mock const produtos = mockProdutos;
-
-  const [produtos, setProdutos] = useState([]);
+  const [produtos, setProdutos] = useState<Produto[]>([]);
   const [loading, setLoading] = useState(true);
+  const [quantidadeItensTotal, setQuantidadeItensTotal] = useState<number>(0);
+  const [precoTotal, setPrecoTotal] = useState<number>(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -29,20 +28,28 @@ export default function Produtos() {
     fetchData();
   }, []);
 
-  return (
-    <>
-      <main>
-        <div className="container p-5">
-          <ResumoCarrinho quantidadeItensTotal={2} precoTotal={1300} />
+  const adicionarAoCarrinho = (produto: Produto) => {
+    const precoProduto = parseFloat(produto.preco);
+    setQuantidadeItensTotal((prevQuantidade) => prevQuantidade + 1);
+    setPrecoTotal((prevPreco) => prevPreco + precoProduto);
+  };
 
-          {/*#mock <ListagemProdutos produtos={produtos} />*/}
-          {loading ? (
-            <p>Loading...</p>
-          ) : (
-            <ListagemProdutos produtos={produtos} />
-          )}
-        </div>
-      </main>
-    </>
+  return (
+    <main>
+      <div className="container p-5">
+        <ResumoCarrinho
+          quantidadeItensTotal={quantidadeItensTotal}
+          precoTotal={precoTotal}
+        />
+        {loading ? (
+          <p>Loading...</p>
+        ) : (
+          <ListagemProdutos
+            produtos={produtos}
+            adicionarAoCarrinho={adicionarAoCarrinho}
+          />
+        )}
+      </div>
+    </main>
   );
 }
