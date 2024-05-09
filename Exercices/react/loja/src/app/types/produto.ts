@@ -11,4 +11,5 @@ export interface Produto {
   descricao: string;
   vendido: string;
   usuario_id: string;
+  quantidade: number;
 }

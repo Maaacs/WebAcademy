@@ -28,11 +28,36 @@ export default function Produtos() {
     fetchData();
   }, []);
 
-  const adicionarAoCarrinho = (produto: Produto) => {
-    const precoProduto = parseFloat(produto.preco);
-    setQuantidadeItensTotal((prevQuantidade) => prevQuantidade + 1);
-    setPrecoTotal((prevPreco) => prevPreco + precoProduto);
+  const atualizarResumo = (carrinho: Produto[]) => {
+    const quantidadeTotal = carrinho.reduce((total, item) => total + 1, 0);
+    const precoTotal = carrinho.reduce(
+      (total, item) => total + parseFloat(item.preco),
+      0
+    );
+    setQuantidadeItensTotal(quantidadeTotal);
+    setPrecoTotal(precoTotal);
   };
+
+  const adicionarAoCarrinho = (produto: Produto) => {
+    const carrinho = JSON.parse(localStorage.getItem("carrinho") || "[]");
+    const produtoExistente = carrinho.find(
+      (item: Produto) => item.id === produto.id
+    );
+
+    if (produtoExistente) {
+      produtoExistente.quantidade += 1;
+    } else {
+      carrinho.push({ ...produto, quantidade: 1 });
+    }
+
+    localStorage.setItem("carrinho", JSON.stringify(carrinho));
+    atualizarResumo(carrinho);
+  };
+
+  useEffect(() => {
+    const carrinho = JSON.parse(localStorage.getItem("carrinho") || "[]");
+    atualizarResumo(carrinho);
+  }, []);
 
   return (
     <main>
