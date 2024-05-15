@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Produto } from "../types/produto";
 
 interface CardProdutoProps {
   produto: Produto;

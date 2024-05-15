@@ -1,3 +1,4 @@
+"use client";
 import { CardProduto } from "./CardProduto";
 
 interface IListagemProdutos {
@@ -17,7 +18,7 @@ export function ListagemProdutos({
           <CardProduto
             key={produto.id}
             produto={produto}
-            adicionarAoCarrinho={adicionarAoCarrinho}
+            adicionarAoCarrinho={adicionarAoCarrinho}  // Passando a função como prop
           />
         ))}
       </div>

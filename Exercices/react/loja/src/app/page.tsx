@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { ListagemProdutos } from "./components/ListagemProdutos";
 import { ResumoCarrinho } from "./components/ResumoCarrinho";
-import { Produto } from "./types/produto";
+
 
 export default function Produtos() {
   const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -31,7 +31,7 @@ export default function Produtos() {
   const atualizarResumo = (carrinho: Produto[]) => {
     const quantidadeTotal = carrinho.reduce((total, item) => total + 1, 0);
     const precoTotal = carrinho.reduce(
-      (total, item) => total + parseFloat(item.preco),
+      (total, item) => total + parseFloat(item.preco.toString()),
       0
     );
     setQuantidadeItensTotal(quantidadeTotal);

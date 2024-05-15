@@ -1,17 +1,9 @@
 interface ItemCarrinhoProps {
   itens: Produto[];
-  removerItemDoCarrinho: (id: string) => void;
+  dispatch: React.Dispatch<Action>;
 }
 
-export function ItemCarrinho({
-  itens,
-  removerItemDoCarrinho,
-}: ItemCarrinhoProps) {
-  const valorTotalProduto = (
-    precoUnitario: number,
-    quantidade: number
-  ): number => precoUnitario * quantidade;
-
+export function ItemCarrinho({ itens, dispatch }: ItemCarrinhoProps) {
   return (
     <div className="card mb-4">
       <div className="row card-body">
@@ -31,24 +23,15 @@ export function ItemCarrinho({
               {itens.map((item) => (
                 <tr key={item.id}>
                   <td>{item.nome}</td>
-                  <td>R$ {parseFloat(item.preco).toFixed(2)}</td>
+                  <td>R$ {Number(item.preco).toFixed(2)}</td>
                   <td>
-                    <button className="btn btn-secondary btn-sm me-2">-</button>
+                    <button className="btn btn-secondary btn-sm me-2" onClick={() => dispatch({ type: 'diminuir_qtd', id: item.id })}>-</button>
                     {item.quantidade}
-                    <button className="btn btn-secondary btn-sm ms-2">+</button>
+                    <button className="btn btn-secondary btn-sm ms-2" onClick={() => dispatch({ type: 'aumentar_qtd', id: item.id })}>+</button>
                   </td>
+                  <td>R$ {(item.preco * item.quantidade).toFixed(2)}</td>
                   <td>
-                    R${" "}
-                    {valorTotalProduto(
-                      parseFloat(item.preco),
-                      item.quantidade
-                    ).toFixed(2)}
-                  </td>
-                  <td>
-                    <button
-                      className="btn btn-danger btn-sm"
-                      onClick={() => removerItemDoCarrinho(item.id)}
-                    >
+                    <button className="btn btn-danger btn-sm" onClick={() => dispatch({ type: 'remover', id: item.id })}>
                       Remover
                     </button>
                   </td>
