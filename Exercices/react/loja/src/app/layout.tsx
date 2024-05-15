@@ -4,6 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar } from "./components/Navbar";
 import BootstrapClient from "./components/BootstrapClient";
 import { ReactQueryClientProvider } from "./components/ReactQuerryClient";
+import { CarrinhoProvider } from './context/carrinhoContext';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,11 @@ export default function RootLayout({
     <html lang="pt-br">
       <body>
         <ReactQueryClientProvider>
-          <Navbar />
-          {children}
-          <BootstrapClient />
+          <CarrinhoProvider>
+            <Navbar />
+            {children}
+            <BootstrapClient />
+          </CarrinhoProvider>
         </ReactQueryClientProvider>
       </body>
     </html>

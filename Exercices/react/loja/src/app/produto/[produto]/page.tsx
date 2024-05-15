@@ -1,7 +1,6 @@
-"use client";
+/*"use client";
 import Image from "next/image";
 import { useDetalhesProduto } from "../../hooks/useDetalheProdutos";
-import { Produto as ProdutoType, Foto } from "../../types/produto"; // Verifique o caminho
 
 export default function ProdutoPage({ produto }: { produto: string }) {
   const { data: produtoDetalhes, isLoading, isError } = useDetalhesProduto(produto);
@@ -34,4 +33,4 @@ export default function ProdutoPage({ produto }: { produto: string }) {
       </div>
     </main>
   );
-}
+}*/

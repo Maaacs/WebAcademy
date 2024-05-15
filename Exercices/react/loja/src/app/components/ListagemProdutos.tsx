@@ -18,7 +18,7 @@ export function ListagemProdutos({
           <CardProduto
             key={produto.id}
             produto={produto}
-            adicionarAoCarrinho={adicionarAoCarrinho}  // Passando a função como prop
+            adicionarAoCarrinho={adicionarAoCarrinho}
           />
         ))}
       </div>

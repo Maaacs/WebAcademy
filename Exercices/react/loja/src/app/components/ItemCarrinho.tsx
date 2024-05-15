@@ -1,3 +1,5 @@
+import { Action } from '../context/carrinhoContext'; 
+
 interface ItemCarrinhoProps {
   itens: Produto[];
   dispatch: React.Dispatch<Action>;
