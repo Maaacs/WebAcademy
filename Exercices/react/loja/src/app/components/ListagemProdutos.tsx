@@ -1,5 +1,4 @@
 import { CardProduto } from "./CardProduto";
-import { Produto } from "../types/produto";
 
 interface IListagemProdutos {
   produtos: Produto[];

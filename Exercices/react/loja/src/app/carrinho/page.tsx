@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { ResumoCarrinho } from "../components/ResumoCarrinho";
 import { ItemCarrinho } from "../components/ItemCarrinho";
-import { Produto } from "../types/produto";
 
 export default function Carrinho() {
   const [itensCarrinho, setItensCarrinho] = useState<Produto[]>([]);

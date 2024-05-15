@@ -1,5 +1,3 @@
-import { Produto } from "../types/produto";
-
 interface ItemCarrinhoProps {
   itens: Produto[];
   removerItemDoCarrinho: (id: string) => void;
@@ -34,7 +32,11 @@ export function ItemCarrinho({
                 <tr key={item.id}>
                   <td>{item.nome}</td>
                   <td>R$ {parseFloat(item.preco).toFixed(2)}</td>
-                  <td>{item.quantidade}</td>
+                  <td>
+                    <button className="btn btn-secondary btn-sm me-2">-</button>
+                    {item.quantidade}
+                    <button className="btn btn-secondary btn-sm ms-2">+</button>
+                  </td>
                   <td>
                     R${" "}
                     {valorTotalProduto(

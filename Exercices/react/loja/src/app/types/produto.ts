@@ -1,9 +1,9 @@
-export interface Foto {
+interface Foto {
   titulo: string;
   src: string;
 }
 
-export interface Produto {
+interface Produto {
   id: string;
   fotos: Foto[];
   nome: string;
