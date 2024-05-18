@@ -3,18 +3,28 @@ import { useRouter } from "next/navigation";
 
 interface CardProdutoProps {
   produto: Produto;
+  favoritos: Produto[];
   adicionarAoCarrinho: (produto: Produto) => void;
+  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
 }
 
-export function CardProduto({
+export default function CardProduto({
   produto,
   adicionarAoCarrinho,
+  favoritos,
+  setFavoritos,
 }: CardProdutoProps) {
   const router = useRouter();
 
   const verDetalhesProduto = (nome: string) => {
     router.push(`/produto/${nome}`);
   };
+
+  const adicionarAosFavoritos = (produto: Produto) => {
+    setFavoritos((favoritos) => [...favoritos, produto]);
+  };
+  
+  const ehFavorito = favoritos.some((item) => item.id === produto.id);
 
   return (
     <div className="col">
@@ -36,6 +46,14 @@ export function CardProduto({
             onClick={() => adicionarAoCarrinho(produto)}
           >
             Adicionar no carrinho
+          </button>
+          <button
+            className="btn btn-success d-block w-100 "
+            type="button"
+            onClick={() => adicionarAosFavoritos(produto)}
+            disabled={ehFavorito}
+          >
+            {ehFavorito ? "Adicionado" : "Adicionar aos favoritos"}
           </button>
           <button 
             className="btn btn-light d-block w-100 mt-2" 
