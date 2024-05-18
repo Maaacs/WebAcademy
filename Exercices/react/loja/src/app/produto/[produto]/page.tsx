@@ -1,19 +1,30 @@
 "use client";
+import React, { useState, useEffect } from 'react';
 import Image from "next/image";
 import { useParams } from "next/navigation";
-import { useDetalhesProduto } from "../../hooks/useDetalheProdutos";
+import api from '../../services/api'; 
 
 export default function ProdutoPage() {
   const params = useParams();
   const produtoId = params.produto as string;
 
-  const {
-    data: produtoDetalhes,
-    error,
-    isLoading,
-  } = useDetalhesProduto(produtoId);
+  const [produtoDetalhes, setProdutoDetalhes] = useState<Produto | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
-  if (isLoading) {
+  useEffect(() => {
+    api.get(`/produto/${produtoId}`)
+      .then(response => {
+        setProdutoDetalhes(response.data);
+        setLoading(false);
+      })
+      .catch(err => {
+        setError(err);
+        setLoading(false);
+      });
+  }, [produtoId]);
+
+  if (loading) {
     return <p>Carregando...</p>;
   }
 
@@ -30,15 +41,17 @@ export default function ProdutoPage() {
       <div className="container p-5">
         <div className="card mb-4">
           <div className="card-body">
-            <h5 className="card-title mb-4 fw-bold">{produtoDetalhes.nome}</h5>
+            <h5 className="card-title mb-4 fw-bold">{produtoDetalhes?.nome}</h5>
             <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mb-3">
-              {produtoDetalhes.fotos.map((foto: Foto) => (
+              {produtoDetalhes.fotos.map((foto) => (
                 <Image
                   key={foto.titulo}
                   src={foto.src}
                   alt={foto.titulo}
                   width={300}
                   height={320}
+                  placeholder='blur'
+                  blurDataURL={foto.src}
                 />
               ))}
             </div>
