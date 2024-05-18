@@ -1,8 +1,5 @@
-import axios from "axios";
+import api from './api';
 
-export async function getDetalhesProduto(produto: string) {
-  const { data } = await axios.get(
-    `https://ranekapi.origamid.dev/json/api/produto/${produto}`
-  );
-  return data;
+export async function getDetalhesProduto(): Promise<Produto[]> {
+    return api.get("/produto").then((response) => response.data);
 }

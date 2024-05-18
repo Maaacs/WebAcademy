@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { ListagemProdutos } from "./components/ListagemProdutos";
 import { ResumoCarrinho } from "./components/ResumoCarrinho";
 import { useCarrinho } from './context/carrinhoContext';
+import api from './services/api';  
 
 export default function Produtos() {
     const [produtos, setProdutos] = useState<Produto[]>([]);
@@ -12,9 +13,8 @@ export default function Produtos() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("https://ranekapi.origamid.dev/json/api/produto");
-                const json = await response.json();
-                setProdutos(json);
+                const response = await api.get("/produto");
+                setProdutos(response.data);
             } catch (error) {
                 console.error("Error fetching products:", error);
             } finally {
@@ -27,9 +27,6 @@ export default function Produtos() {
     const adicionarAoCarrinho = (produto: Produto) => {
         dispatch({ type: 'adicionar', item: {...produto, quantidade: 1} });
     };
-
-    useEffect(() => {
-    }, [itensCarrinho]);
 
     return (
         <main>
