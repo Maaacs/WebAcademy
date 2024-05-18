@@ -1,5 +1,6 @@
 "use client";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function Navbar() {
   const currentPath = usePathname();
@@ -28,15 +29,20 @@ export function Navbar() {
         <div className="collapse navbar-collapse" id="navbarCollapse">
           <ul className="navbar-nav me-auto mb-2 mb-md-0">
             <li className="nav-item">
-              <a className="nav-link" href="/">
+              <Link className="nav-link" href="/">
                 Início
-              </a>
+              </Link>
             </li>
             <li className="nav-item">
-              <a className="nav-link" href="/carrinho">
+              <Link className="nav-link" href="/carrinho">
                 Carrinho
-              </a>
+              </Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" href="/favoritos">
+                Lista de Favoritos
+              </Link>
+          </li>
           </ul>
           <button className="btn btn-dark">Sair</button>
         </div>

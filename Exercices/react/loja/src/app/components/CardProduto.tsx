@@ -40,6 +40,7 @@ export default function CardProduto({
         <div className="card-body bg-light">
           <h5 className="card-title">{produto.nome}</h5>
           <p className="card-text text-secondary">R$ {produto.preco}</p>
+
           <button
             className="btn btn-dark d-block w-100"
             type="button"
@@ -47,14 +48,16 @@ export default function CardProduto({
           >
             Adicionar no carrinho
           </button>
+
           <button
-            className="btn btn-success d-block w-100 "
+            className="btn btn-success d-block w-100 mt-2"
             type="button"
             onClick={() => adicionarAosFavoritos(produto)}
             disabled={ehFavorito}
           >
             {ehFavorito ? "Adicionado" : "Adicionar aos favoritos"}
           </button>
+
           <button 
             className="btn btn-light d-block w-100 mt-2" 
             type="button"
@@ -62,6 +65,7 @@ export default function CardProduto({
           >
             Ver detalhes
           </button>
+
         </div>
       </div>
     </div>
