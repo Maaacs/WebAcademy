@@ -5,6 +5,7 @@ import { Navbar } from "./components/Navbar";
 import BootstrapClient from "./components/BootstrapClient";
 import { ReactQueryClientProvider } from "./components/ReactQuerryClient";
 import { CarrinhoProvider } from './context/carrinhoContext';
+import  FavoritosProvider  from './components/FavoritosProvider'; 
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,9 +24,11 @@ export default function RootLayout({
       <body>
         <ReactQueryClientProvider>
           <CarrinhoProvider>
-            <Navbar />
-            {children}
-            <BootstrapClient />
+            <FavoritosProvider>
+              <Navbar />
+                {children}
+              <BootstrapClient />
+            </FavoritosProvider>
           </CarrinhoProvider>
         </ReactQueryClientProvider>
       </body>

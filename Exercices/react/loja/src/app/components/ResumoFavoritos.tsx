@@ -1,14 +1,10 @@
+"use client";
+import { useFavoritosContext } from "../hooks/useFavoritos";
 import CardProduto from "./CardProduto";
 
-interface ResumoCarrinhoProps {
-  favoritos: Produto[];
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
-}
+export default function ResumoFavoritos() {
+  const { favoritos } = useFavoritosContext(); 
 
-export default function ResumoFavoritos({
-  favoritos,
-  setFavoritos,
-}: ResumoCarrinhoProps) {
   return (
     <div className="mt-4">
       <h5 className="mb-4">Seus produtos favoritos:</h5>
@@ -18,9 +14,7 @@ export default function ResumoFavoritos({
           <CardProduto
             key={produto.id}
             produto={produto}
-            favoritos={favoritos}
-            setFavoritos={setFavoritos}
-            adicionarAoCarrinho={() => {}}
+            adicionarAoCarrinho={() => {}} 
           />
         ))}
       </div>

@@ -4,15 +4,11 @@ import ResumoFavoritos from "./ResumoFavoritos";
 
 interface IListagemProdutos {
   produtos: Produto[];
-  favoritos: Produto[];
   adicionarAoCarrinho: (produto: Produto) => void;
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
 }
 
 export function ListagemProdutos({
   produtos,
-  favoritos,
-  setFavoritos,
   adicionarAoCarrinho,
 }: IListagemProdutos) {
   return (
@@ -24,13 +20,11 @@ export function ListagemProdutos({
             key={produto.id}
             produto={produto}
             adicionarAoCarrinho={adicionarAoCarrinho}
-            setFavoritos={setFavoritos}
-            favoritos={favoritos}
           />
         ))}
       </div>
 
-      <ResumoFavoritos favoritos={favoritos} setFavoritos={setFavoritos} />
+     <ResumoFavoritos/>
     </>
   );
 }

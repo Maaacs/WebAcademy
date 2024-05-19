@@ -1,30 +1,28 @@
+"use client";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useFavoritosContext, useVerificaProdutoFavorito } from "../hooks/useFavoritos";
 
 interface CardProdutoProps {
   produto: Produto;
-  favoritos: Produto[];
   adicionarAoCarrinho: (produto: Produto) => void;
-  setFavoritos: React.Dispatch<React.SetStateAction<Produto[]>>;
 }
 
 export default function CardProduto({
   produto,
   adicionarAoCarrinho,
-  favoritos,
-  setFavoritos,
 }: CardProdutoProps) {
   const router = useRouter();
+  const { setFavoritos } = useFavoritosContext();
+  const ehFavorito = useVerificaProdutoFavorito(produto.id);
 
   const verDetalhesProduto = (nome: string) => {
     router.push(`/produto/${nome}`);
   };
 
-  const adicionarAosFavoritos = (produto: Produto) => {
+  const adicionarAosFavoritos = () => {
     setFavoritos((favoritos) => [...favoritos, produto]);
   };
-  
-  const ehFavorito = favoritos.some((item) => item.id === produto.id);
 
   return (
     <div className="col">
@@ -52,7 +50,7 @@ export default function CardProduto({
           <button
             className="btn btn-success d-block w-100 mt-2"
             type="button"
-            onClick={() => adicionarAosFavoritos(produto)}
+            onClick={adicionarAosFavoritos}
             disabled={ehFavorito}
           >
             {ehFavorito ? "Adicionado" : "Adicionar aos favoritos"}
