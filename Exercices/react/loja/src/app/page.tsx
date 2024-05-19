@@ -9,6 +9,7 @@ export default function Produtos() {
     const [produtos, setProdutos] = useState<Produto[]>([]);
     const [loading, setLoading] = useState(true);
     const { state: itensCarrinho, dispatch } = useCarrinho();
+    const [favoritos, setFavoritos] = useState<Produto[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -38,7 +39,12 @@ export default function Produtos() {
                 {loading ? (
                     <p>Loading...</p>
                 ) : (
-                    <ListagemProdutos produtos={produtos} adicionarAoCarrinho={adicionarAoCarrinho} />
+                    <ListagemProdutos 
+                    produtos={produtos} 
+                    favoritos={favoritos}
+                    setFavoritos={setFavoritos}
+                    adicionarAoCarrinho={adicionarAoCarrinho} 
+                    />
                 )}
             </div>
         </main>

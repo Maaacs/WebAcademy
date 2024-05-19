@@ -1,5 +1,6 @@
 "use client";
-import { CardProduto } from "./CardProduto";
+import CardProduto from "./CardProduto";
+import ResumoFavoritos from "./ResumoFavoritos";
 
 interface IListagemProdutos {
   produtos: Produto[];
@@ -22,6 +23,8 @@ export function ListagemProdutos({
           />
         ))}
       </div>
+
+     <ResumoFavoritos/>
     </>
   );
 }
